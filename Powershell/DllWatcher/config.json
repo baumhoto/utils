@@ -1,0 +1,18 @@
+{
+    "watch": [
+        { "sourceDll" : "C:/LocalData/repos/gitversion-test/library1/bin/Debug/netstandard2.0/library1.dll",
+          "targets": [
+              "C:/Users/tobia/.nuget/packages/test/",
+              "C:/LocalData/repos/gitversion-test2/.packages/test/"
+          ],
+          "includePdb" : true
+        },
+        { "sourceDll" : "C:/LocalData/repos/gitversion-test/library2/bin/Debug/netstandard2.0/library2.dll",
+            "targets": [
+                "C:/Users/tobia/.nuget/packages/test/",
+                "C:/LocalData/repos/gitversion-test2/.packages/test/"
+            ],
+            "includePdb" : true
+        }
+    ]
+}
