@@ -36,100 +36,118 @@ setWindowPosition(splitX, splitY, posX, posY, widthMultiplier = 1, heightMultipl
     return
 }
 
+Control & Tab::AltTab  ; Hold down right-control then press right-shift repeatedly to move forward.
+Control & `::ShiftAltTab
+LWin & j::AltTab
+LWin & k::ShiftAltTab
+Alt & k::Up
+
 return ; -----------------  end of autoload -----------------------------------
+; If the keys are swapped, Alt must be pressed first (use one at a time):
+;#if GetKeyState("Alt", "P")
+;    c::MsgBox Hotkey activated.
+;return
+
+Control & Space up::
+    Send ^{Escape}
+return
+
+;disable windows key trigger start menu
+~LWin::Send {Blind}{vkE8}
 
 CapsLock::
     Send {Escape}
 return
 
-Control & k::
-    Send {Up}
-return
 
-Control & j::
+Alt & j::
     Send {Down}
 return
 
-Alt & Escape::
-   Send {Alt Shift Tab}
+Control & Escape::
+   Send !+{Tab}
 return
 
-!q::
+Control & q::
     Send !{F4}
 return
 
 ; upper left corner
-#!1::
+^#1::
 setWindowPosition(2, 2, 1, 1)
 return
 
 ; upper right corner
-#!2::
+^#2::
 setWindowPosition(2, 2, 2, 1)
 return
 
 ; lower left corner
-#!3::
+^#3::
 setWindowPosition(2, 2, 1, 2)
 return
 
 ; lower right corner
-#!4::
+^#4::
 setWindowPosition(2, 2, 2, 2)
 return
 
 ; center of screen
-#!5::
+^#5::
 setWindowPosition(4, 4, 2, 2, 3, 3, 0.5, 0.5)
 return
 
 ; whole screen (not fullscreen)
-#!6::
+^#6::
 setWindowPosition(1, 1, 1, 1)
 return
 
 ; left half
-#!7::
+^#7::
 setWindowPosition(2, 1, 1, 1)
 return
 
 ; right half
-#!8::
+^#8::
 setWindowPosition(2, 1, 2, 1)
 return
 
 ; left 1/3
-#!9::
+^#9::
 setWindowPosition(3, 1, 1, 1)
 return
 
 ; middle 1/3
-#!0::
+^#0::
 setWindowPosition(3, 1, 2, 1)
 return
 
 ;key (us) = -
 ; right 1/3
-#!SC00C::
+^#SC00C::
 setWindowPosition(3, 1, 3, 1)
+return
+
+; midlde 2/3
+^#p:: 
+setWindowPosition(4, 1, 2, 1, 3, 1, 0.5, 0.5)
 return
 
 ; key (us) = [
 ; left 2/3
-#!SC01A:: 
+^#SC01A:: 
 setWindowPosition(3, 1, 1, 1, 2, 1)
 return
 
-
 ; key (us) = ]
 ; right 2/3
-#!SC01B::
+^#SC01B::
 setWindowPosition(3, 1, 2, 1, 2, 1)
 return
 
 ; key us = =
 ; move window to next screen and center it
-#!SC00D::
+^#SC00D::
 MMPrimDPI := 1.0 ;DPI Scale of the primary monitor (divided by 100).
 MMSecDPI := 2.0  ;DPI Scale of the secondary monitor (divided by 100).
 SysGet, MMCount, MonitorCount
